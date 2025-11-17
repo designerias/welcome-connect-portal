@@ -23,7 +23,7 @@ const slides: Slide[] = [
   },
   {
     subtitle: "Now Available",
-    title: "Payment Processing Where it Belongs",
+    title: "Payment Processing\nWhere it Belongs",
     description: "Say goodbye to manual reconciliation and third-party vendors.",
     buttonText: "Activate Now",
   },
@@ -55,7 +55,7 @@ export const LoginCarousel = () => {
             {slides[currentSlide].subtitle}
           </p>
         )}
-        <h2 className="text-xl md:text-2xl lg:text-3xl font-bold leading-tight text-white">
+        <h2 className="text-xl md:text-2xl lg:text-3xl font-bold leading-tight text-white whitespace-pre-line">
           {slides[currentSlide].title}
         </h2>
         <p className="text-base md:text-lg whitespace-pre-line leading-snug text-white/90">
