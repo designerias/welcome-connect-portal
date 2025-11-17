@@ -43,7 +43,7 @@ export const LoginCarousel = () => {
       <img 
         src={greenBgCircle} 
         alt="" 
-        className="absolute bottom-0 right-0 w-auto h-[60%] opacity-30 pointer-events-none"
+        className="absolute bottom-0 right-0 h-full w-auto opacity-30 pointer-events-none"
       />
       
       <div className="max-w-2xl w-full space-y-8 animate-in fade-in duration-500 relative z-10" key={currentSlide}>
