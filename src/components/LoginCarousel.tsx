@@ -54,9 +54,9 @@ export const LoginCarousel = () => {
           {slides[currentSlide].description}
         </p>
         <Button 
-          variant="default" 
+          variant="outline" 
           size="lg"
-          className="font-semibold bg-white text-[#3C8C3E] hover:bg-white/90"
+          className="font-semibold bg-white/10 text-white border-white hover:bg-white/20"
         >
           {slides[currentSlide].buttonText}
         </Button>
