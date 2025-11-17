@@ -39,24 +39,24 @@ export const LoginCarousel = () => {
 
   return (
     <div className="relative h-full flex flex-col items-center justify-center p-8 md:p-12 overflow-hidden">
-      {/* Background SVG */}
+      {/* Background SVG with subtle overlay effect */}
       <img 
         src={greenBgCircle} 
         alt="" 
-        className="absolute bottom-0 right-0 h-full w-auto opacity-30 pointer-events-none"
+        className="absolute bottom-0 right-0 h-full w-auto opacity-20 pointer-events-none"
       />
       
       <div className="max-w-2xl w-full space-y-8 animate-in fade-in duration-500 relative z-10" key={currentSlide}>
-        <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold leading-tight text-foreground">
+        <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold leading-tight text-white">
           {slides[currentSlide].title}
         </h2>
-        <p className="text-lg md:text-xl whitespace-pre-line leading-relaxed text-muted-foreground">
+        <p className="text-lg md:text-xl whitespace-pre-line leading-relaxed text-white/90">
           {slides[currentSlide].description}
         </p>
         <Button 
           variant="default" 
           size="lg"
-          className="font-semibold"
+          className="font-semibold bg-white text-[#3C8C3E] hover:bg-white/90"
         >
           {slides[currentSlide].buttonText}
         </Button>
@@ -69,7 +69,7 @@ export const LoginCarousel = () => {
             key={index}
             onClick={() => setCurrentSlide(index)}
             className={`h-2 rounded-full transition-all duration-300 ${
-              index === currentSlide ? "w-8 bg-primary" : "w-2 bg-muted"
+              index === currentSlide ? "w-8 bg-white" : "w-2 bg-white/40"
             }`}
             aria-label={`Go to slide ${index + 1}`}
           />
