@@ -16,7 +16,8 @@ const slides: Slide[] = [
     buttonText: "Register Now",
   },
   {
-    title: "Video Consults Software - Now Available",
+    subtitle: "Now Available",
+    title: "Video Consults Software",
     description: "• Provide Continuity of Care\n• Connect with more patients\n• Maintain revenue streams",
     buttonText: "Sign Up Now",
   },
