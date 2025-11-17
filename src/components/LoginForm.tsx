@@ -153,16 +153,14 @@ export const LoginForm = () => {
             <span>|</span>
             <a href="#" className="hover:text-foreground transition-colors">Disclaimer</a>
             <span>|</span>
+            <a href="#" className="hover:text-foreground transition-colors">SLA</a>
+            <span>|</span>
           </div>
           <div className="flex items-center justify-center gap-3 text-xs text-muted-foreground">
             <a href="#" className="hover:text-foreground transition-colors">Terms & Conditions</a>
             <span>|</span>
             <a href="#" className="hover:text-foreground transition-colors">HIPAA & HITECH</a>
             <span>|</span>
-            <a href="#" className="hover:text-foreground transition-colors">SLA</a>
-            <span>|</span>
-          </div>
-          <div className="flex items-center justify-center text-xs text-muted-foreground">
             <a href="#" className="hover:text-foreground transition-colors">Patents & Trademarks</a>
           </div>
         </div>
