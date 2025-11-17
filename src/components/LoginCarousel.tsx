@@ -46,18 +46,18 @@ export const LoginCarousel = () => {
   };
 
   return (
-    <div className="relative h-full flex flex-col items-center justify-center p-8 md:p-12 text-white">
+    <div className="relative h-full flex flex-col items-center justify-center p-8 md:p-12">
       <div className="max-w-2xl w-full space-y-8 animate-in fade-in duration-500" key={currentSlide}>
-        <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold leading-tight">
+        <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold leading-tight text-foreground">
           {slides[currentSlide].title}
         </h2>
-        <p className="text-lg md:text-xl whitespace-pre-line leading-relaxed opacity-90">
+        <p className="text-lg md:text-xl whitespace-pre-line leading-relaxed text-muted-foreground">
           {slides[currentSlide].description}
         </p>
         <Button 
-          variant="outline" 
+          variant="default" 
           size="lg"
-          className="bg-white/10 border-white/30 text-white hover:bg-white hover:text-primary backdrop-blur-sm transition-all duration-300"
+          className="font-semibold"
         >
           {slides[currentSlide].buttonText}
         </Button>
@@ -67,7 +67,7 @@ export const LoginCarousel = () => {
       <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 flex items-center gap-4">
         <button
           onClick={prevSlide}
-          className="p-2 rounded-full bg-white/20 hover:bg-white/30 transition-colors"
+          className="p-2 rounded-full bg-secondary/20 hover:bg-secondary/30 transition-colors text-foreground"
           aria-label="Previous slide"
         >
           <ChevronLeft className="w-5 h-5" />
@@ -79,7 +79,7 @@ export const LoginCarousel = () => {
               key={index}
               onClick={() => setCurrentSlide(index)}
               className={`h-2 rounded-full transition-all duration-300 ${
-                index === currentSlide ? "w-8 bg-white" : "w-2 bg-white/50"
+                index === currentSlide ? "w-8 bg-primary" : "w-2 bg-muted"
               }`}
               aria-label={`Go to slide ${index + 1}`}
             />
@@ -88,7 +88,7 @@ export const LoginCarousel = () => {
 
         <button
           onClick={nextSlide}
-          className="p-2 rounded-full bg-white/20 hover:bg-white/30 transition-colors"
+          className="p-2 rounded-full bg-secondary/20 hover:bg-secondary/30 transition-colors text-foreground"
           aria-label="Next slide"
         >
           <ChevronRight className="w-5 h-5" />
