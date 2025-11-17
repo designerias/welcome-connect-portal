@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
+import greenBgCircle from "@/assets/green-bg-circle.svg";
 
 interface Slide {
   title: string;
@@ -37,8 +38,15 @@ export const LoginCarousel = () => {
   }, []);
 
   return (
-    <div className="relative h-full flex flex-col items-center justify-center p-8 md:p-12">
-      <div className="max-w-2xl w-full space-y-8 animate-in fade-in duration-500" key={currentSlide}>
+    <div className="relative h-full flex flex-col items-center justify-center p-8 md:p-12 overflow-hidden">
+      {/* Background SVG */}
+      <img 
+        src={greenBgCircle} 
+        alt="" 
+        className="absolute bottom-0 right-0 w-auto h-[60%] opacity-30 pointer-events-none"
+      />
+      
+      <div className="max-w-2xl w-full space-y-8 animate-in fade-in duration-500 relative z-10" key={currentSlide}>
         <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold leading-tight text-foreground">
           {slides[currentSlide].title}
         </h2>
