@@ -128,7 +128,7 @@ export const LoginForm = () => {
 
       {/* Footer Content */}
       <div className="space-y-4 pt-6 border-t border-border">
-        <p className="text-xs text-center text-muted-foreground">
+        <p className="text-[10px] leading-tight text-center text-muted-foreground">
           This system contains PHI information and therefore for HIPAA compliance and security purposes, 
           the system should only be accessed by authorized users
         </p>
