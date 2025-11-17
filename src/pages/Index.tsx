@@ -1,12 +1,79 @@
-// Update this page (the content is just a fallback if you fail to update the page)
+import { LoginCarousel } from "@/components/LoginCarousel";
+import { LoginForm } from "@/components/LoginForm";
+import logo from "@/assets/practicesuite.svg";
 
 const Index = () => {
   return (
-    <div className="flex min-h-screen items-center justify-center bg-background">
-      <div className="text-center">
-        <h1 className="mb-4 text-4xl font-bold">Welcome to Your Blank App</h1>
-        <p className="text-xl text-muted-foreground">Start building your amazing project here!</p>
-      </div>
+    <div className="min-h-screen flex flex-col bg-background">
+      {/* Header */}
+      <header className="bg-white border-b border-border py-4 px-6">
+        <div className="max-w-7xl mx-auto flex items-center justify-between">
+          <img src={logo} alt="PracticeSuite" className="h-10 md:h-12" />
+          <button className="bg-secondary text-secondary-foreground px-6 py-2 rounded-md font-semibold hover:bg-secondary/90 transition-colors">
+            LOGIN
+          </button>
+        </div>
+      </header>
+
+      {/* Main Content */}
+      <main className="flex-1 grid lg:grid-cols-2">
+        {/* Left Side - Carousel */}
+        <div className="relative bg-gradient-primary overflow-hidden hidden lg:block">
+          <div className="absolute inset-0 bg-gradient-overlay" />
+          <div className="relative z-10 h-full">
+            <LoginCarousel />
+          </div>
+        </div>
+
+        {/* Right Side - Login Form */}
+        <div className="flex items-center justify-center p-6 md:p-12 bg-white">
+          <LoginForm />
+        </div>
+      </main>
+
+      {/* Footer */}
+      <footer className="bg-white border-t border-border py-6 px-6">
+        <div className="max-w-7xl mx-auto space-y-4">
+          <p className="text-xs text-center text-muted-foreground">
+            This system contains PHI information and therefore for HIPAA compliance and security purposes, 
+            the system should only be accessed by authorized users
+          </p>
+          
+          <div className="flex items-center justify-center gap-2 text-xs text-secondary">
+            <span className="inline-block w-5 h-5 bg-secondary/10 rounded-full flex items-center justify-center">
+              <svg className="w-3 h-3" fill="currentColor" viewBox="0 0 20 20">
+                <path d="M10 12a2 2 0 100-4 2 2 0 000 4z"/>
+                <path fillRule="evenodd" d="M.458 10C1.732 5.943 5.522 3 10 3s8.268 2.943 9.542 7c-1.274 4.057-5.064 7-9.542 7S1.732 14.057.458 10zM14 10a4 4 0 11-8 0 4 4 0 018 0z" clipRule="evenodd"/>
+              </svg>
+            </span>
+            <span className="font-semibold">On-Demand Training Webinars - Medical Billing Software</span>
+            <a href="#" className="underline hover:no-underline">Watch Now.</a>
+          </div>
+          
+          <div className="flex flex-wrap items-center justify-center gap-3 text-xs text-muted-foreground">
+            <a href="#" className="hover:text-foreground transition-colors">Privacy Policy</a>
+            <span>|</span>
+            <a href="#" className="hover:text-foreground transition-colors">Privacy Policy (CA)</a>
+            <span>|</span>
+            <a href="#" className="hover:text-foreground transition-colors">Disclaimer</a>
+            <span>|</span>
+            <a href="#" className="hover:text-foreground transition-colors">Terms & Conditions</a>
+            <span>|</span>
+            <a href="#" className="hover:text-foreground transition-colors">HIPAA & HITECH</a>
+            <span>|</span>
+            <a href="#" className="hover:text-foreground transition-colors">SLA</a>
+            <span>|</span>
+            <a href="#" className="hover:text-foreground transition-colors">Patents & Trademarks</a>
+          </div>
+          
+          <p className="text-xs text-center text-muted-foreground">
+            © 2025 All rights reserved.{" "}
+            <a href="https://www.practicesuite.com" className="text-secondary hover:underline">
+              www.practicesuite.com
+            </a>
+          </p>
+        </div>
+      </footer>
     </div>
   );
 };
