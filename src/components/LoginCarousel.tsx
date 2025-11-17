@@ -1,6 +1,5 @@
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
-import { ChevronLeft, ChevronRight } from "lucide-react";
 
 interface Slide {
   title: string;
@@ -37,14 +36,6 @@ export const LoginCarousel = () => {
     return () => clearInterval(timer);
   }, []);
 
-  const nextSlide = () => {
-    setCurrentSlide((prev) => (prev + 1) % slides.length);
-  };
-
-  const prevSlide = () => {
-    setCurrentSlide((prev) => (prev - 1 + slides.length) % slides.length);
-  };
-
   return (
     <div className="relative h-full flex flex-col items-center justify-center p-8 md:p-12">
       <div className="max-w-2xl w-full space-y-8 animate-in fade-in duration-500" key={currentSlide}>
@@ -64,35 +55,17 @@ export const LoginCarousel = () => {
       </div>
 
       {/* Navigation dots */}
-      <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 flex items-center gap-4">
-        <button
-          onClick={prevSlide}
-          className="p-2 rounded-full bg-secondary/20 hover:bg-secondary/30 transition-colors text-foreground"
-          aria-label="Previous slide"
-        >
-          <ChevronLeft className="w-5 h-5" />
-        </button>
-        
-        <div className="flex gap-2">
-          {slides.map((_, index) => (
-            <button
-              key={index}
-              onClick={() => setCurrentSlide(index)}
-              className={`h-2 rounded-full transition-all duration-300 ${
-                index === currentSlide ? "w-8 bg-primary" : "w-2 bg-muted"
-              }`}
-              aria-label={`Go to slide ${index + 1}`}
-            />
-          ))}
-        </div>
-
-        <button
-          onClick={nextSlide}
-          className="p-2 rounded-full bg-secondary/20 hover:bg-secondary/30 transition-colors text-foreground"
-          aria-label="Next slide"
-        >
-          <ChevronRight className="w-5 h-5" />
-        </button>
+      <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 flex gap-2">
+        {slides.map((_, index) => (
+          <button
+            key={index}
+            onClick={() => setCurrentSlide(index)}
+            className={`h-2 rounded-full transition-all duration-300 ${
+              index === currentSlide ? "w-8 bg-primary" : "w-2 bg-muted"
+            }`}
+            aria-label={`Go to slide ${index + 1}`}
+          />
+        ))}
       </div>
     </div>
   );
