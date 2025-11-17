@@ -1,20 +1,9 @@
 import { LoginCarousel } from "@/components/LoginCarousel";
 import { LoginForm } from "@/components/LoginForm";
-import logo from "@/assets/practicesuite.svg";
 
 const Index = () => {
   return (
     <div className="min-h-screen flex flex-col bg-background">
-      {/* Header */}
-      <header className="bg-white border-b border-border py-4 px-6">
-        <div className="max-w-7xl mx-auto flex items-center justify-between">
-          <img src={logo} alt="PracticeSuite" className="h-10 md:h-12" />
-          <button className="bg-secondary text-secondary-foreground px-6 py-2 rounded-md font-semibold hover:bg-secondary/90 transition-colors">
-            LOGIN
-          </button>
-        </div>
-      </header>
-
       {/* Main Content */}
       <main className="flex-1 grid lg:grid-cols-2">
         {/* Left Side - Carousel */}
