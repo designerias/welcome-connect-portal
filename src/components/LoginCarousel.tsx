@@ -48,9 +48,9 @@ export const LoginCarousel = () => {
         className="absolute bottom-0 right-0 h-full w-auto opacity-20 pointer-events-none"
       />
       
-      <div className="max-w-2xl w-full space-y-5 animate-in fade-in duration-500 relative z-10" key={currentSlide}>
+      <div className="max-w-2xl w-full space-y-3 animate-in fade-in duration-500 relative z-10" key={currentSlide}>
         {slides[currentSlide].subtitle && (
-          <p className="text-sm md:text-base font-light tracking-wide text-white/80 uppercase">
+          <p className="text-base md:text-lg font-light tracking-wide text-white/80 uppercase mb-1">
             {slides[currentSlide].subtitle}
           </p>
         )}
