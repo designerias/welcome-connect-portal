@@ -18,16 +18,16 @@ export const LoginForm = () => {
   };
 
   return (
-    <div className="w-full max-w-md space-y-8 animate-in fade-in duration-500">
+    <div className="w-full max-w-md space-y-4 animate-in fade-in duration-500">
       <img src={logo} alt="PracticeSuite" className="h-12" />
       
-      <div className="space-y-2">
+      <div className="space-y-1">
         <h1 className="text-3xl font-bold text-foreground">Welcome Back!</h1>
         <p className="text-muted-foreground">Login to your account.</p>
       </div>
 
-      <form onSubmit={handleSubmit} className="space-y-6">
-        <div className="space-y-2">
+      <form onSubmit={handleSubmit} className="space-y-4">
+        <div className="space-y-1.5">
           <Label htmlFor="username" className="text-sm font-medium">
             Username
           </Label>
@@ -60,7 +60,7 @@ export const LoginForm = () => {
           </div>
         </div>
 
-        <div className="space-y-2">
+        <div className="space-y-1.5">
           <Label htmlFor="password" className="text-sm font-medium">
             Password
           </Label>
@@ -93,7 +93,7 @@ export const LoginForm = () => {
           </div>
         </div>
 
-        <div className="space-y-2">
+        <div className="space-y-1.5">
           <Label htmlFor="accountNumber" className="text-sm font-medium">
             Account #
           </Label>
@@ -127,7 +127,7 @@ export const LoginForm = () => {
       </form>
 
       {/* Footer Content */}
-      <div className="space-y-4 pt-6 border-t border-border">
+      <div className="space-y-3 pt-4 border-t border-border">
         <p className="text-[10px] leading-tight text-center text-muted-foreground">
           This system contains PHI information and therefore for HIPAA compliance and security purposes, 
           the system should only be accessed by authorized users
@@ -145,7 +145,7 @@ export const LoginForm = () => {
           </button>
         </div>
         
-        <div className="space-y-2">
+        <div className="space-y-1.5">
           <div className="flex flex-wrap items-center justify-center gap-3 text-xs text-muted-foreground">
             <a href="#" className="hover:text-foreground transition-colors">Privacy Policy</a>
             <span>|</span>
