@@ -38,7 +38,7 @@ export const LoginCarousel = () => {
   }, []);
 
   return (
-    <div className="relative h-full flex flex-col items-center justify-center p-8 md:p-12 overflow-hidden">
+    <div className="relative h-full flex flex-col items-center justify-center p-6 md:p-10 overflow-hidden">
       {/* Background SVG with subtle overlay effect */}
       <img 
         src={greenBgCircle} 
@@ -46,11 +46,11 @@ export const LoginCarousel = () => {
         className="absolute bottom-0 right-0 h-full w-auto opacity-20 pointer-events-none"
       />
       
-      <div className="max-w-2xl w-full space-y-8 animate-in fade-in duration-500 relative z-10" key={currentSlide}>
-        <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold leading-tight text-white">
+      <div className="max-w-2xl w-full space-y-5 animate-in fade-in duration-500 relative z-10" key={currentSlide}>
+        <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold leading-tight text-white">
           {slides[currentSlide].title}
         </h2>
-        <p className="text-lg md:text-xl whitespace-pre-line leading-relaxed text-white/90">
+        <p className="text-base md:text-lg whitespace-pre-line leading-relaxed text-white/90">
           {slides[currentSlide].description}
         </p>
         <Button 
@@ -63,7 +63,7 @@ export const LoginCarousel = () => {
       </div>
 
       {/* Navigation dots */}
-      <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 flex gap-2">
+      <div className="absolute bottom-6 left-1/2 transform -translate-x-1/2 flex gap-2">
         {slides.map((_, index) => (
           <button
             key={index}
