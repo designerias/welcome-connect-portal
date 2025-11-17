@@ -6,6 +6,7 @@ interface Slide {
   title: string;
   description: string;
   buttonText: string;
+  subtitle?: string;
 }
 
 const slides: Slide[] = [
@@ -20,7 +21,8 @@ const slides: Slide[] = [
     buttonText: "Sign Up Now",
   },
   {
-    title: "Now Available - Payment Processing Where it Belongs",
+    subtitle: "Now Available",
+    title: "Payment Processing Where it Belongs",
     description: "Say goodbye to manual reconciliation and third-party vendors.",
     buttonText: "Activate Now",
   },
@@ -47,6 +49,11 @@ export const LoginCarousel = () => {
       />
       
       <div className="max-w-2xl w-full space-y-5 animate-in fade-in duration-500 relative z-10" key={currentSlide}>
+        {slides[currentSlide].subtitle && (
+          <p className="text-sm md:text-base font-light tracking-wide text-white/80 uppercase">
+            {slides[currentSlide].subtitle}
+          </p>
+        )}
         <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold leading-tight text-white">
           {slides[currentSlide].title}
         </h2>
