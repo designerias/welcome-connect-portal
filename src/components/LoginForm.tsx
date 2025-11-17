@@ -133,15 +133,16 @@ export const LoginForm = () => {
           the system should only be accessed by authorized users
         </p>
         
-        <div className="flex items-center justify-center gap-2 text-xs text-secondary">
-          <span className="inline-block w-5 h-5 bg-secondary/10 rounded-full flex items-center justify-center">
-            <svg className="w-3 h-3" fill="currentColor" viewBox="0 0 20 20">
-              <path d="M10 12a2 2 0 100-4 2 2 0 000 4z"/>
-              <path fillRule="evenodd" d="M.458 10C1.732 5.943 5.522 3 10 3s8.268 2.943 9.542 7c-1.274 4.057-5.064 7-9.542 7S1.732 14.057.458 10zM14 10a4 4 0 11-8 0 4 4 0 018 0z" clipRule="evenodd"/>
-            </svg>
-          </span>
-          <span className="font-semibold">On-Demand Training Webinars - Medical Billing Software</span>
-          <a href="#" className="underline hover:no-underline">Watch Now.</a>
+        <div className="flex items-center justify-center gap-2 text-xs">
+          <button className="inline-flex items-center gap-2 px-4 py-2 bg-secondary/10 hover:bg-secondary/20 rounded-full transition-colors">
+            <span className="inline-block w-5 h-5 bg-secondary/20 rounded-full flex items-center justify-center">
+              <svg className="w-3 h-3 text-secondary" fill="currentColor" viewBox="0 0 20 20">
+                <path d="M10 12a2 2 0 100-4 2 2 0 000 4z"/>
+                <path fillRule="evenodd" d="M.458 10C1.732 5.943 5.522 3 10 3s8.268 2.943 9.542 7c-1.274 4.057-5.064 7-9.542 7S1.732 14.057.458 10zM14 10a4 4 0 11-8 0 4 4 0 018 0z" clipRule="evenodd"/>
+              </svg>
+            </span>
+            <span className="font-semibold text-secondary">On-Demand Training Webinars - Medical Billing Software</span>
+          </button>
         </div>
         
         <div className="flex flex-wrap items-center justify-center gap-3 text-xs text-muted-foreground">
