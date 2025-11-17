@@ -4,6 +4,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip";
 import { User, Lock, Search, HelpCircle } from "lucide-react";
+import logo from "@/assets/practicesuite.svg";
 
 export const LoginForm = () => {
   const [username, setUsername] = useState("");
@@ -18,6 +19,8 @@ export const LoginForm = () => {
 
   return (
     <div className="w-full max-w-md space-y-8 animate-in fade-in duration-500">
+      <img src={logo} alt="PracticeSuite" className="h-12" />
+      
       <div className="space-y-2">
         <h1 className="text-3xl font-bold text-foreground">Welcome Back!</h1>
         <p className="text-muted-foreground">Login to your account.</p>
