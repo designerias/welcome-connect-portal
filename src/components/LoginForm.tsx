@@ -145,20 +145,24 @@ export const LoginForm = () => {
           </button>
         </div>
         
-        <div className="flex flex-wrap items-center justify-center gap-3 text-xs text-muted-foreground">
-          <a href="#" className="hover:text-foreground transition-colors">Privacy Policy</a>
-          <span>|</span>
-          <a href="#" className="hover:text-foreground transition-colors">Privacy Policy (CA)</a>
-          <span>|</span>
-          <a href="#" className="hover:text-foreground transition-colors">Disclaimer</a>
-          <span>|</span>
-          <a href="#" className="hover:text-foreground transition-colors">Terms & Conditions</a>
-          <span>|</span>
-          <a href="#" className="hover:text-foreground transition-colors">HIPAA & HITECH</a>
-          <span>|</span>
-          <a href="#" className="hover:text-foreground transition-colors">SLA</a>
-          <span>|</span>
-          <a href="#" className="hover:text-foreground transition-colors">Patents & Trademarks</a>
+        <div className="space-y-2">
+          <div className="flex flex-wrap items-center justify-center gap-3 text-xs text-muted-foreground">
+            <a href="#" className="hover:text-foreground transition-colors">Privacy Policy</a>
+            <span>|</span>
+            <a href="#" className="hover:text-foreground transition-colors">Privacy Policy (CA)</a>
+            <span>|</span>
+            <a href="#" className="hover:text-foreground transition-colors">Disclaimer</a>
+            <span>|</span>
+          </div>
+          <div className="flex flex-wrap items-center justify-center gap-3 text-xs text-muted-foreground">
+            <a href="#" className="hover:text-foreground transition-colors">Terms & Conditions</a>
+            <span>|</span>
+            <a href="#" className="hover:text-foreground transition-colors">HIPAA & HITECH</a>
+            <span>|</span>
+            <a href="#" className="hover:text-foreground transition-colors">SLA</a>
+            <span>|</span>
+            <a href="#" className="hover:text-foreground transition-colors">Patents & Trademarks</a>
+          </div>
         </div>
         
         <p className="text-xs text-center text-muted-foreground">
