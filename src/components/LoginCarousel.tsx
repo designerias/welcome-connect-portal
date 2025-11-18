@@ -69,7 +69,7 @@ export const LoginCarousel = () => {
       {/* Carousel Content */}
       <div className="flex-1 flex items-end justify-start relative z-10 pb-2">
         <div className="w-full max-w-2xl animate-in fade-in duration-500" key={currentSlide}>
-          <div className="bg-white rounded-xl p-6 md:p-7 shadow-lg min-h-[200px]">
+          <div className="bg-white rounded-lg p-3 md:p-3.5 shadow-lg min-h-[200px]">
             <div className="flex flex-col md:flex-row gap-4 md:gap-6 items-start">
               {/* Icon */}
               <div className="flex-shrink-0">
@@ -94,8 +94,8 @@ export const LoginCarousel = () => {
                   {slides[currentSlide].description}
                 </p>
                 <Button 
-                  variant="default" 
-                  size="default"
+                  variant="outline" 
+                  size="sm"
                   className="font-semibold mt-1"
                 >
                   {slides[currentSlide].buttonText}
