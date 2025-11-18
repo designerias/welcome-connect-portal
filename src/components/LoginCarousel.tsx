@@ -67,27 +67,27 @@ export const LoginCarousel = () => {
       </div>
 
       {/* Carousel Content */}
-      <div className="flex-1 flex items-center justify-center relative z-10">
+      <div className="flex-1 flex items-end justify-center relative z-10 pb-16">
         <div className="w-full max-w-2xl animate-in fade-in duration-500" key={currentSlide}>
-          <div className="bg-white rounded-[2.5rem] p-8 md:p-10 shadow-lg">
-            <div className="flex flex-col md:flex-row gap-6 md:gap-8 items-start">
+          <div className="bg-white rounded-xl p-6 md:p-7 shadow-lg">
+            <div className="flex flex-col md:flex-row gap-4 md:gap-6 items-start">
               {/* Icon */}
               <div className="flex-shrink-0">
                 <img 
                   src={slides[currentSlide].icon} 
                   alt="" 
-                  className="w-16 h-16 md:w-20 md:h-20"
+                  className="w-14 h-14 md:w-16 md:h-16"
                 />
               </div>
               
               {/* Content */}
-              <div className="flex-1 space-y-3">
+              <div className="flex-1 space-y-2">
                 {slides[currentSlide].subtitle && (
-                  <p className="text-sm md:text-base font-light tracking-wide text-gray-500 uppercase">
+                  <p className="text-xs md:text-sm font-light tracking-wide text-gray-500 uppercase">
                     {slides[currentSlide].subtitle}
                   </p>
                 )}
-                <h2 className="text-xl md:text-2xl lg:text-3xl font-bold leading-tight text-gray-800 whitespace-pre-line">
+                <h2 className="text-lg md:text-xl lg:text-2xl font-bold leading-tight text-gray-800 whitespace-pre-line">
                   {slides[currentSlide].title}
                 </h2>
                 <p className="text-sm md:text-base whitespace-pre-line leading-snug text-gray-600">
@@ -95,8 +95,8 @@ export const LoginCarousel = () => {
                 </p>
                 <Button 
                   variant="default" 
-                  size="lg"
-                  className="font-semibold mt-2"
+                  size="default"
+                  className="font-semibold mt-1"
                 >
                   {slides[currentSlide].buttonText}
                 </Button>
