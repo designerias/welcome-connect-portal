@@ -58,7 +58,7 @@ export const LoginCarousel = () => {
       />
       
       {/* Header with Main Heading */}
-      <div className="relative z-10 pt-4 pb-8">
+      <div className="relative z-10 pt-4 pb-8 text-left">
         <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold leading-tight text-white">
           One Medical Office<br />
           Solution <span className="font-light">for Your</span><br />
@@ -67,9 +67,9 @@ export const LoginCarousel = () => {
       </div>
 
       {/* Carousel Content */}
-      <div className="flex-1 flex items-end justify-center relative z-10 pb-16">
+      <div className="flex-1 flex items-end justify-start relative z-10 pb-2">
         <div className="w-full max-w-2xl animate-in fade-in duration-500" key={currentSlide}>
-          <div className="bg-white rounded-xl p-6 md:p-7 shadow-lg">
+          <div className="bg-white rounded-xl p-6 md:p-7 shadow-lg min-h-[200px]">
             <div className="flex flex-col md:flex-row gap-4 md:gap-6 items-start">
               {/* Icon */}
               <div className="flex-shrink-0">
@@ -107,7 +107,7 @@ export const LoginCarousel = () => {
       </div>
 
       {/* Navigation dots */}
-      <div className="relative z-10 pb-6 flex justify-center gap-2">
+      <div className="relative z-10 pb-6 flex justify-start gap-2">
         {slides.map((_, index) => (
           <button
             key={index}
