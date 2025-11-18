@@ -57,13 +57,13 @@ export const LoginCarousel = () => {
         className="absolute bottom-0 right-0 h-full w-auto opacity-20 pointer-events-none"
       />
       
-      {/* Header with Logo */}
+      {/* Header with Main Heading */}
       <div className="relative z-10 pt-4 pb-8">
-        <img 
-          src={practicesuiteLogo} 
-          alt="PracticeSuite" 
-          className="h-12 md:h-14"
-        />
+        <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold leading-tight text-white">
+          One Medical Office<br />
+          Solution <span className="font-light">for Your</span><br />
+          Entire Practice
+        </h1>
       </div>
 
       {/* Carousel Content */}
