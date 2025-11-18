@@ -16,6 +16,7 @@ interface Slide {
 
 const slides: Slide[] = [
   {
+    subtitle: "Now Available",
     title: "Free Training Webinars!",
     description: "Become proficient in all aspects of your medical billing software.",
     buttonText: "Register Now",
