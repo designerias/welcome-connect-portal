@@ -7,8 +7,8 @@ const Index = () => {
       {/* Main Content */}
       <main className="flex-1 grid lg:grid-cols-2">
         {/* Left Side - Carousel */}
-        <div className="relative bg-gradient-to-br from-[#3C8C3E] to-[#9AC449] overflow-hidden hidden lg:block">
-          <div className="relative h-full">
+        <div className="relative bg-gradient-to-br from-[#3C8C3E] to-[#9AC449] overflow-hidden hidden lg:block rounded-3xl m-6">
+          <div className="relative h-full p-8">
             <LoginCarousel />
           </div>
         </div>
