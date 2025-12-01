@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
 import { Shield } from "lucide-react";
 import { QRCodeSVG } from "qrcode.react";
 
@@ -31,7 +32,7 @@ export const MFASetupV2 = ({ onAssign, onCancel, hideHeader = false }: MFASetupV
       )}
 
       {/* Main Content */}
-      <div className="grid md:grid-cols-2 gap-4 md:gap-6 loginpage-v2-mfa-content">
+      <div className="grid md:grid-cols-[1.6fr_1fr] gap-4 md:gap-4 loginpage-v2-mfa-content">
         {/* Left Section - Instructions and Input */}
         <div className="space-y-2.5 loginpage-v2-mfa-instructions pl-0 md:pl-10">
           <div className="space-y-2.5">
@@ -64,34 +65,38 @@ export const MFASetupV2 = ({ onAssign, onCancel, hideHeader = false }: MFASetupV
             </div>
 
             {showSecretKey && (
-              <div className="ml-7 p-2.5 bg-white rounded border border-gray-300 w-full">
-                <p className="text-sm font-mono font-semibold uppercase whitespace-nowrap overflow-x-auto" style={{ color: '#9AC449' }}>{secretKey}</p>
+              <div className="ml-7 py-2.5 px-2.5 bg-white rounded border border-gray-300 w-full">
+                <p className="text-sm font-mono font-semibold uppercase select-all whitespace-nowrap" style={{ color: '#9AC449' }}>{secretKey}</p>
               </div>
             )}
 
             <div className="flex items-start gap-2">
               <span className="flex-shrink-0 w-5 h-5 rounded-full bg-[#69C1E2] text-white text-xs font-semibold flex items-center justify-center mt-0.5">4</span>
               <div className="flex-1 space-y-1.5">
-                <p className="text-sm leading-snug" style={{ color: 'hsl(0deg 0.61% 32.35%)' }}>
+                <Label htmlFor="mfa-code" className="text-sm font-medium" style={{ color: 'hsl(0deg 0.61% 32.35%)' }}>
                   Type your 2FA code below
-                </p>
-                <Input
-                  id="mfa-code"
-                  type="text"
-                  placeholder="Enter 2FA code"
-                  value={code}
-                  onChange={(e) => setCode(e.target.value)}
-                  className="h-11 border-2 border-[#69C1E2] rounded-lg focus:border-[#4fa8d0] focus-visible:ring-0"
-                  maxLength={6}
-                />
+                </Label>
+                <div className="relative">
+                  <div className="relative rounded-lg border border-transparent p-[2px] focus-within:border-dashed focus-within:border-[#9AC449] transition-colors">
+                    <Input
+                      id="mfa-code"
+                      type="text"
+                      placeholder="Enter 2FA code"
+                      value={code}
+                      onChange={(e) => setCode(e.target.value)}
+                      className="pl-4 pr-4 h-12 rounded-lg border-2 border-[#69C1E2] bg-white hover:border-[#4fa8d0] focus:border-[#4fa8d0] focus-visible:ring-0 transition-colors"
+                      maxLength={6}
+                    />
+                  </div>
+                </div>
               </div>
             </div>
           </div>
         </div>
 
         {/* Right Section - QR Code */}
-        <div className="flex items-start justify-center loginpage-v2-mfa-qr pl-0 md:pl-5 pr-0">
-          <div className="p-2 bg-white border border-gray-300 rounded-lg">
+        <div className="flex items-start justify-center loginpage-v2-mfa-qr pl-0 md:pl-2 pr-0">
+          <div className="p-0.5 bg-white border border-gray-300 rounded-lg">
             <div className="scale-[0.8] sm:scale-100 origin-center">
               <QRCodeSVG
                 value={qrCodeValue}

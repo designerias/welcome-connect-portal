@@ -28,7 +28,7 @@ const IndexV2 = () => {
   return (
     <div className="min-h-screen flex flex-col bg-background loginpage-v2-container">
       {/* Main Content */}
-      <main className="flex-1 grid lg:grid-cols-2 loginpage-v2-main relative">
+      <main className="flex-1 grid lg:grid-cols-2 loginpage-v2-main relative" style={{ backgroundColor: '#f9fcfd' }}>
         {/* Left Side - Login Form, Unable to Login, or 2FA */}
         <div className="flex items-start justify-center p-4 sm:p-6 md:p-12 loginpage-v2-form-wrapper" style={{ backgroundColor: '#f9fcfd' }}>
           <div className={`w-full space-y-4 loginpage-v2-content-wrapper ${showMFASetup ? 'max-w-4xl' : 'max-w-md'}`} style={{ marginTop: '15px' }}>
@@ -46,7 +46,7 @@ const IndexV2 = () => {
             {showTwoFactorAuth && (
               <div className={`flex items-center gap-2 sm:gap-3 loginpage-v2-2fa-header pt-2 ${showMFASetup ? 'pl-0 md:pl-[150px]' : 'pl-0'}`}>
                 <Shield className="w-6 h-6 sm:w-8 sm:h-8" style={{ color: 'hsl(0deg 0.61% 32.35%)' }} />
-                <h1 className="text-xl sm:text-2xl font-bold" style={{ color: 'hsl(0deg 0.61% 32.35%)' }}>
+                <h1 className="text-xl sm:text-2xl font-bold leading-tight" style={{ color: 'hsl(0deg 0.61% 32.35%)' }}>
                   Two-Factor Authentication
                 </h1>
               </div>
@@ -99,7 +99,7 @@ const IndexV2 = () => {
         <div 
           className="relative overflow-hidden hidden lg:block rounded-[20px] m-2.5 loginpage-v2-carousel-wrapper border-[0.25px] border-gray-300"
           style={{
-            background: 'linear-gradient(110deg in oklab, rgb(105, 193, 226) -125%, rgb(180, 224, 241) -15%, rgb(255, 255, 255) 90%)'
+            background: 'linear-gradient(210deg in oklab, rgb(255, 255, 255) 10%, rgb(180, 224, 241) 115%, rgb(105, 193, 226) 225%)'
           }}
         >
           {/* Icon inside right box - bottom right corner */}
