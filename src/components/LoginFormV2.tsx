@@ -28,16 +28,8 @@ export const LoginFormV2 = ({ onUnableToLogin, onLoginSuccess }: LoginFormV2Prop
   };
 
   return (
-    <div className="w-full max-w-md space-y-4 animate-in fade-in duration-500 loginpage-v2-form">
-      <img src={logo} alt="PracticeSuite" className="h-12 loginpage-v2-logo" />
-      
-      <div className="space-y-2 loginpage-v2-title-section">
-        <h1 className="text-3xl font-bold loginpage-v2-title" style={{ color: 'hsl(0deg 0.61% 32.35%)' }}>Welcome Back!</h1>
-        <p className="loginpage-v2-subtitle" style={{ color: 'hsl(0deg 0.61% 32.35%)' }}>Login to your account.</p>
-        <div className="h-0.5 bg-gray-400 w-24 mb-4 loginpage-v2-divider"></div>
-      </div>
-
-      <form onSubmit={handleSubmit} className="space-y-4 pt-4 loginpage-v2-form-element">
+    <div className="w-full space-y-4 loginpage-v2-form">
+      <form onSubmit={handleSubmit} className="space-y-4 loginpage-v2-form-element pt-4 sm:pt-[15px]">
         <div className="space-y-1.5">
           <Label htmlFor="username-v2" className="text-sm font-medium" style={{ color: 'hsl(0deg 0.61% 32.35%)' }}>
             Username
@@ -131,16 +123,17 @@ export const LoginFormV2 = ({ onUnableToLogin, onLoginSuccess }: LoginFormV2Prop
 
         <Button
           type="submit"
-          className="w-full h-12 text-white font-semibold loginpage-v2-submit-btn"
+          className="w-full h-12 text-white font-semibold loginpage-v2-submit-btn text-lg rounded-lg"
           style={{
-            background: 'linear-gradient(135deg, #69C1E2 0%, #4fa8d0 100%)',
-            border: '0.5px solid #4fa8d0',
+            background: 'linear-gradient(135deg, #9AC449 0%, #69C1E2 100%)',
+            border: '1px solid rgba(255, 255, 255, 0.3)',
+            boxShadow: '0 2px 4px rgba(0, 0, 0, 0.15)',
           }}
           onMouseEnter={(e) => {
-            e.currentTarget.style.background = 'linear-gradient(135deg, #4fa8d0 0%, #69C1E2 100%)';
+            e.currentTarget.style.background = 'linear-gradient(135deg, #8ab43a 0%, #5aa8c0 100%)';
           }}
           onMouseLeave={(e) => {
-            e.currentTarget.style.background = 'linear-gradient(135deg, #69C1E2 0%, #4fa8d0 100%)';
+            e.currentTarget.style.background = 'linear-gradient(135deg, #9AC449 0%, #69C1E2 100%)';
           }}
         >
           <Lock className="w-4 h-4 mr-2" />

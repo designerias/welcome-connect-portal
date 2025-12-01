@@ -4,40 +4,36 @@ import { Shield, ShieldCheck } from "lucide-react";
 interface TwoFactorAuthV2Props {
   onEnroll?: () => void;
   onDefer?: () => void;
+  hideHeader?: boolean;
 }
 
-export const TwoFactorAuthV2 = ({ onEnroll, onDefer }: TwoFactorAuthV2Props) => {
+export const TwoFactorAuthV2 = ({ onEnroll, onDefer, hideHeader = false }: TwoFactorAuthV2Props) => {
   const enrollmentDeadline = "12/17/2025";
 
   return (
-    <div className="w-full space-y-4 animate-in fade-in duration-500 loginpage-v2-2fa">
-      {/* Header with Shield Icon */}
-      <div className="flex items-center gap-3 loginpage-v2-2fa-header pt-2">
-        <Shield className="w-8 h-8" style={{ color: 'hsl(0deg 0.61% 32.35%)' }} />
-        <h1 className="text-2xl font-bold" style={{ color: 'hsl(0deg 0.61% 32.35%)' }}>
-          Two-Factor Authentication
-        </h1>
-      </div>
+    <div className="w-full space-y-4 loginpage-v2-2fa">
+      {/* Header with Shield Icon - Only shown if not hidden */}
+      {!hideHeader && (
+        <div className="flex items-center gap-3 loginpage-v2-2fa-header pt-2">
+          <Shield className="w-8 h-8" style={{ color: 'hsl(0deg 0.61% 32.35%)' }} />
+          <h1 className="text-2xl font-bold" style={{ color: 'hsl(0deg 0.61% 32.35%)' }}>
+            Two-Factor Authentication
+          </h1>
+        </div>
+      )}
 
       {/* Instructions */}
       <div className="space-y-4 loginpage-v2-2fa-instructions pt-2">
-        <p className="text-base leading-relaxed" style={{ color: 'hsl(0deg 0.61% 32.35%)' }}>
-          Your admin has enforce 2-Step Verification to ensure better account security.
-        </p>
-        
-        <p 
-          className="text-base font-medium"
-          style={{ color: '#9AC449' }}
-        >
-          Please click "Enroll" to setup 2-step verification.
+        <p className="text-sm sm:text-base leading-relaxed" style={{ color: 'hsl(0deg 0.61% 32.35%)' }}>
+          Your admin has enforce 2-Step Verification to ensure better account security. Please click <span style={{ color: '#9AC449' }}>"Enroll"</span> to setup 2-step verification.
         </p>
       </div>
 
-      {/* Enroll Button */}
+      {/* Enroll Button - Full width */}
       <div className="pt-2 loginpage-v2-2fa-enroll-btn">
         <Button
           onClick={onEnroll}
-          className="w-full h-12 text-white font-semibold loginpage-v2-enroll-btn"
+          className="w-full h-10 text-white font-semibold rounded-lg loginpage-v2-enroll-btn"
           style={{
             background: 'linear-gradient(135deg, #69C1E2 0%, #4fa8d0 100%)',
             border: '0.5px solid #4fa8d0',
@@ -67,9 +63,9 @@ export const TwoFactorAuthV2 = ({ onEnroll, onDefer }: TwoFactorAuthV2Props) => 
       </div>
 
       {/* Enrollment Deadline */}
-      <div className="text-center loginpage-v2-2fa-deadline">
+      <div className="text-left loginpage-v2-2fa-deadline">
         <p className="text-sm" style={{ color: 'hsl(0deg 0.61% 32.35%)' }}>
-          Complete your 2FA enrollment by {enrollmentDeadline} to secure your account.
+          Complete your 2FA enrollment by <span className="font-semibold" style={{ textDecoration: 'underline', textDecorationStyle: 'dashed' }}>{enrollmentDeadline}</span> to secure your account.
         </p>
       </div>
 
@@ -81,7 +77,7 @@ export const TwoFactorAuthV2 = ({ onEnroll, onDefer }: TwoFactorAuthV2Props) => 
         </p>
         
         <p className="text-xs text-center" style={{ color: 'hsl(0deg 0.61% 32.35%)' }}>
-          © 2025 All rights reserved. www.practicesuite.com
+          © 2025 PracticeSuite Inc.
         </p>
       </div>
     </div>

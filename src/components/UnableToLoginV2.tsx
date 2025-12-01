@@ -44,11 +44,11 @@ export const UnableToLoginV2 = ({ onBackToLogin }: UnableToLoginV2Props) => {
 
   return (
     <div className="w-full max-w-md space-y-4 animate-in fade-in duration-500 loginpage-v2-unable-login">
-      <img src={logo} alt="PracticeSuite" className="h-12 loginpage-v2-logo" />
+      <img src={logo} alt="PracticeSuite" className="h-10 sm:h-12 loginpage-v2-logo" />
       
       <div className="space-y-2 loginpage-v2-title-section">
-        <h1 className="text-3xl font-bold loginpage-v2-title" style={{ color: 'hsl(0deg 0.61% 32.35%)' }}>Unable to login?</h1>
-        <p className="loginpage-v2-subtitle" style={{ color: 'hsl(0deg 0.61% 32.35%)' }}>Having trouble signing in?</p>
+        <h1 className="text-2xl sm:text-3xl font-bold loginpage-v2-title" style={{ color: 'hsl(0deg 0.61% 32.35%)' }}>Unable to login?</h1>
+        <p className="text-sm sm:text-base loginpage-v2-subtitle" style={{ color: 'hsl(0deg 0.61% 32.35%)' }}>Having trouble signing in?</p>
         <div className="h-0.5 bg-gray-400 w-24 mb-4 loginpage-v2-divider"></div>
       </div>
 
@@ -96,6 +96,20 @@ export const UnableToLoginV2 = ({ onBackToLogin }: UnableToLoginV2Props) => {
             </label>
           </div>
         </div>
+
+        {/* Cancel Button - Always visible */}
+        {!selectedProblem && (
+          <div className="flex gap-3 pt-4">
+            <Button
+              type="button"
+              onClick={handleCancel}
+              variant="outline"
+              className="flex-1 h-12 font-semibold border-2 border-[#69C1E2] text-[#69C1E2] hover:bg-[#69C1E2] hover:text-white transition-colors"
+            >
+              Cancel
+            </Button>
+          </div>
+        )}
 
         {/* Instructions */}
         {selectedProblem === "forgot-password" && (
@@ -155,7 +169,7 @@ export const UnableToLoginV2 = ({ onBackToLogin }: UnableToLoginV2Props) => {
               </div>
             </div>
 
-            {/* Action Buttons */}
+            {/* Action Buttons for "Other" option */}
             <div className="flex gap-3 pt-4">
               <Button
                 type="button"
@@ -281,7 +295,7 @@ export const UnableToLoginV2 = ({ onBackToLogin }: UnableToLoginV2Props) => {
             </div>
           </div>
 
-          {/* Action Buttons */}
+          {/* Action Buttons for Form Fields */}
           <div className="flex gap-3 pt-2">
             <Button
               type="button"
