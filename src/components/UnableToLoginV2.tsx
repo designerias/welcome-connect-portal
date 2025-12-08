@@ -7,11 +7,12 @@ import logo from "@/assets/practicesuite.svg";
 
 interface UnableToLoginV2Props {
   onBackToLogin?: () => void;
+  onLogoClick?: () => void;
 }
 
 type ProblemType = "forgot-password" | "forgot-account-number" | "other" | null;
 
-export const UnableToLoginV2 = ({ onBackToLogin }: UnableToLoginV2Props) => {
+export const UnableToLoginV2 = ({ onBackToLogin, onLogoClick }: UnableToLoginV2Props) => {
   const [selectedProblem, setSelectedProblem] = useState<ProblemType>(null);
   const [userNameOrEmail, setUserNameOrEmail] = useState("");
   const [accountNumber, setAccountNumber] = useState("");
@@ -44,7 +45,9 @@ export const UnableToLoginV2 = ({ onBackToLogin }: UnableToLoginV2Props) => {
 
   return (
     <div className="w-full max-w-md space-y-4 animate-in fade-in duration-500 loginpage-v2-unable-login">
-      <img src={logo} alt="PracticeSuite" className="h-10 sm:h-12 loginpage-v2-logo" />
+      <a href="#username-v2" onClick={(e) => { e.preventDefault(); onLogoClick?.(); }} className="inline-block cursor-pointer">
+        <img src={logo} alt="PracticeSuite" className="h-10 sm:h-12 loginpage-v2-logo" />
+      </a>
       
       <div className="space-y-2 loginpage-v2-title-section">
         <h1 className="text-2xl sm:text-3xl font-bold loginpage-v2-title" style={{ color: 'hsl(0deg 0.61% 32.35%)' }}>Unable to login?</h1>
@@ -104,7 +107,7 @@ export const UnableToLoginV2 = ({ onBackToLogin }: UnableToLoginV2Props) => {
               type="button"
               onClick={handleCancel}
               variant="outline"
-              className="flex-1 h-12 font-semibold border-2 border-[#69C1E2] text-[#69C1E2] hover:bg-[#69C1E2] hover:text-white transition-colors"
+              className="w-1/2 h-12 font-semibold border-2 border-[#69C1E2] text-[#69C1E2] hover:bg-[#69C1E2] hover:text-white transition-colors"
             >
               Cancel
             </Button>

@@ -3,6 +3,7 @@ import { LoginCarouselV2 } from "@/components/LoginCarouselV2";
 import { LoginFormV2 } from "@/components/LoginFormV2";
 import { UnableToLoginV2 } from "@/components/UnableToLoginV2";
 import { TwoFactorAuthV2 } from "@/components/TwoFactorAuthV2";
+import { TwoFactorVerifyV2 } from "@/components/TwoFactorVerifyV2";
 import { MFASetupV2 } from "@/components/MFASetupV2";
 import { Shield } from "lucide-react";
 import icon from "@/assets/icon.svg";
@@ -11,6 +12,7 @@ import logo from "@/assets/practicesuite.svg";
 const IndexV2 = () => {
   const [showUnableToLogin, setShowUnableToLogin] = useState(false);
   const [showTwoFactorAuth, setShowTwoFactorAuth] = useState(false);
+  const [show2FAVerify, setShow2FAVerify] = useState(false);
   const [showMFASetup, setShowMFASetup] = useState(false);
   const [isDeferring, setIsDeferring] = useState(false);
 
@@ -25,26 +27,47 @@ const IndexV2 = () => {
     }, 500);
   };
 
+  const handleLogoClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    e.preventDefault();
+    // Reset all states to show login form
+    setShowUnableToLogin(false);
+    setShowTwoFactorAuth(false);
+    setShow2FAVerify(false);
+    setShowMFASetup(false);
+    setIsDeferring(false);
+    
+    // Scroll to username field after a brief delay to ensure form is rendered
+    setTimeout(() => {
+      const usernameField = document.getElementById('username-v2');
+      if (usernameField) {
+        usernameField.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        usernameField.focus();
+      }
+    }, 100);
+  };
+
   return (
     <div className="min-h-screen flex flex-col bg-background loginpage-v2-container">
       {/* Main Content */}
       <main className="flex-1 grid lg:grid-cols-2 loginpage-v2-main relative" style={{ backgroundColor: '#f9fcfd' }}>
         {/* Left Side - Login Form, Unable to Login, or 2FA */}
         <div className="flex items-start justify-center p-4 sm:p-6 md:p-12 loginpage-v2-form-wrapper" style={{ backgroundColor: '#f9fcfd' }}>
-          <div className={`w-full space-y-4 loginpage-v2-content-wrapper ${showMFASetup ? 'max-w-4xl' : 'max-w-md'}`} style={{ marginTop: '15px' }}>
+          <div className="w-full space-y-4 loginpage-v2-content-wrapper max-w-md" style={{ marginTop: '15px' }}>
             {/* Static Logo and Welcome Section - Hidden on Unable to login page */}
             {!showUnableToLogin && (
-              <div className={`space-y-2 loginpage-v2-static-header ${showMFASetup ? 'pl-0 md:pl-[150px]' : 'pl-0'}`}>
-                <img src={logo} alt="PracticeSuite" className="h-10 sm:h-12 loginpage-v2-logo" />
+              <div className="space-y-2 loginpage-v2-static-header">
+                <a href="#username-v2" onClick={handleLogoClick} className="inline-block cursor-pointer">
+                  <img src={logo} alt="PracticeSuite" className="h-10 sm:h-12 loginpage-v2-logo" />
+                </a>
                 <h1 className="text-2xl sm:text-3xl font-bold loginpage-v2-title" style={{ color: 'hsl(0deg 0.61% 32.35%)' }}>Welcome Back!</h1>
                 <p className="text-sm sm:text-base loginpage-v2-subtitle" style={{ color: 'hsl(0deg 0.61% 32.35%)' }}>Login to your account.</p>
                 <div className="h-0.5 bg-gray-400 w-24 mb-4 loginpage-v2-divider"></div>
               </div>
             )}
 
-            {/* Static 2FA Header - Always visible when 2FA or MFA setup is showing, aligns with content */}
-            {showTwoFactorAuth && (
-              <div className={`flex items-center gap-2 sm:gap-3 loginpage-v2-2fa-header pt-2 ${showMFASetup ? 'pl-0 md:pl-[150px]' : 'pl-0'}`}>
+            {/* Static 2FA Header - Always visible when 2FA, 2FA Verify, or MFA setup is showing, aligns with content */}
+            {(showTwoFactorAuth || show2FAVerify) && !showMFASetup && (
+              <div className="flex items-center gap-2 sm:gap-3 loginpage-v2-2fa-header pt-2">
                 <Shield className="w-6 h-6 sm:w-8 sm:h-8" style={{ color: 'hsl(0deg 0.61% 32.35%)' }} />
                 <h1 className="text-xl sm:text-2xl font-bold leading-tight" style={{ color: 'hsl(0deg 0.61% 32.35%)' }}>
                   Two-Factor Authentication
@@ -55,16 +78,37 @@ const IndexV2 = () => {
             {/* Content Container */}
             <div className="relative" style={{ minHeight: '300px' }}>
               {/* Login Form or Unable to Login */}
-              {!showTwoFactorAuth && !showMFASetup && (
+              {!showTwoFactorAuth && !showMFASetup && !show2FAVerify && (
                 <div className="w-full">
                   {showUnableToLogin ? (
-                    <UnableToLoginV2 onBackToLogin={() => setShowUnableToLogin(false)} />
+                    <UnableToLoginV2 
+                      onBackToLogin={() => setShowUnableToLogin(false)}
+                      onLogoClick={handleLogoClick}
+                    />
                   ) : (
                     <LoginFormV2 
                       onUnableToLogin={() => setShowUnableToLogin(true)}
-                      onLoginSuccess={() => setShowTwoFactorAuth(true)}
+                      onLoginSuccess={() => setShow2FAVerify(true)}
                     />
                   )}
+                </div>
+              )}
+
+              {/* 2FA Verify Section - Shows after login */}
+              {show2FAVerify && !showMFASetup && (
+                <div className="w-full">
+                  <TwoFactorVerifyV2
+                    onVerify={(code, trustDevice) => {
+                      console.log("2FA verification:", { code, trustDevice });
+                      setShow2FAVerify(false);
+                      setShowTwoFactorAuth(true);
+                    }}
+                    onCancel={() => setShow2FAVerify(false)}
+                    onEnroll={() => {
+                      setShow2FAVerify(false);
+                      setShowTwoFactorAuth(true);
+                    }}
+                  />
                 </div>
               )}
 

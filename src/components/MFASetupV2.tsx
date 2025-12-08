@@ -20,7 +20,7 @@ export const MFASetupV2 = ({ onAssign, onCancel, hideHeader = false }: MFASetupV
   const qrCodeValue = `otpauth://totp/PracticeSuite:user@example.com?secret=${secretKey}&issuer=PracticeSuite`;
 
   return (
-    <div className="w-full space-y-4 loginpage-v2-mfa-setup pl-0 md:pl-[150px]">
+    <div className="w-full space-y-4 loginpage-v2-mfa-setup">
       {/* Header with Shield Icon - Only shown if not hidden */}
       {!hideHeader && (
         <div className="flex items-center gap-2 sm:gap-3 loginpage-v2-mfa-header pt-2">

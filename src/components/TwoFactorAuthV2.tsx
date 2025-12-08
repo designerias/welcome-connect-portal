@@ -25,15 +25,15 @@ export const TwoFactorAuthV2 = ({ onEnroll, onDefer, hideHeader = false }: TwoFa
       {/* Instructions */}
       <div className="space-y-4 loginpage-v2-2fa-instructions pt-2">
         <p className="text-sm sm:text-base leading-normal" style={{ color: 'hsl(0deg 0.61% 32.35%)' }}>
-          Your admin has enforce 2-Step Verification to ensure better account security. Please click <span style={{ color: '#69C1E2' }}>"Enroll"</span> to setup 2-step verification.
+          Your admin has enforce 2-Step Verification to ensure better account security. Please click "Enroll" to setup 2-step verification.
         </p>
       </div>
 
-      {/* Enroll Button - Full width */}
-      <div className="pt-2 loginpage-v2-2fa-enroll-btn">
+      {/* Enroll Button and Defer Option - Side by side */}
+      <div className="pt-2 flex items-center gap-4 loginpage-v2-2fa-actions">
         <Button
           onClick={onEnroll}
-          className="w-full h-10 text-white font-semibold rounded-lg loginpage-v2-enroll-btn"
+          className="h-10 text-white font-semibold rounded-lg loginpage-v2-enroll-btn px-6"
           style={{
             backgroundColor: '#69C1E2',
             border: '0.5px solid #4fa8d0',
@@ -48,14 +48,10 @@ export const TwoFactorAuthV2 = ({ onEnroll, onDefer, hideHeader = false }: TwoFa
           <ShieldCheck className="w-4 h-4 mr-2" />
           Enroll
         </Button>
-      </div>
-
-      {/* Defer Option */}
-      <div className="text-center loginpage-v2-2fa-defer">
         <button
           type="button"
           onClick={onDefer}
-          className="text-sm transition-colors hover:opacity-80"
+          className="text-sm transition-colors hover:opacity-80 loginpage-v2-2fa-defer"
           style={{ color: '#69C1E2' }}
         >
           Do this later

@@ -3,7 +3,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip";
-import { User, Lock, Search, HelpCircle } from "lucide-react";
+import { User, Lock, Search, HelpCircle, Eye, EyeOff } from "lucide-react";
 import logo from "@/assets/practicesuite.svg";
 
 interface LoginFormV2Props {
@@ -15,6 +15,7 @@ export const LoginFormV2 = ({ onUnableToLogin, onLoginSuccess }: LoginFormV2Prop
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [accountNumber, setAccountNumber] = useState("");
+  const [showPassword, setShowPassword] = useState(false);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -29,7 +30,7 @@ export const LoginFormV2 = ({ onUnableToLogin, onLoginSuccess }: LoginFormV2Prop
 
   return (
     <div className="w-full space-y-4 loginpage-v2-form">
-      <form onSubmit={handleSubmit} className="space-y-4 loginpage-v2-form-element pt-4 sm:pt-[15px]">
+      <form onSubmit={handleSubmit} className="space-y-2.5 loginpage-v2-form-element pt-4 sm:pt-[15px]">
         <div className="space-y-1.5">
           <Label htmlFor="username-v2" className="text-sm font-medium" style={{ color: 'hsl(0deg 0.61% 32.35%)' }}>
             Username
@@ -43,7 +44,8 @@ export const LoginFormV2 = ({ onUnableToLogin, onLoginSuccess }: LoginFormV2Prop
                 placeholder="Username"
                 value={username}
                 onChange={(e) => setUsername(e.target.value)}
-                className="pl-10 pr-10 h-12 rounded-lg border-2 border-[#69C1E2] bg-white hover:border-[#4fa8d0] focus:border-[#4fa8d0] focus-visible:ring-0 transition-colors"
+                className="pl-10 pr-10 h-12 rounded-lg border-2 border-[#69C1E2] bg-white hover:border-[#4fa8d0] focus:border-[#4fa8d0] focus-visible:ring-0 transition-colors font-semibold placeholder:font-normal placeholder:opacity-60"
+                style={{ color: 'hsl(0deg 0.61% 20%)' }}
                 required
               />
             </div>
@@ -75,30 +77,43 @@ export const LoginFormV2 = ({ onUnableToLogin, onLoginSuccess }: LoginFormV2Prop
             <div className="relative rounded-lg border border-transparent p-[2px] focus-within:border-dashed focus-within:border-[#9AC449] transition-colors">
               <Input
                 id="password-v2"
-                type="password"
+                type={showPassword ? "text" : "password"}
                 placeholder="Password"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
-                className="pl-10 pr-10 h-12 rounded-lg border-2 border-[#69C1E2] bg-white hover:border-[#4fa8d0] focus:border-[#4fa8d0] focus-visible:ring-0 transition-colors"
+                className={`pl-10 ${password ? 'pr-20' : 'pr-10'} h-12 rounded-lg border-2 border-[#69C1E2] bg-white hover:border-[#4fa8d0] focus:border-[#4fa8d0] focus-visible:ring-0 transition-colors font-semibold text-lg tracking-wider placeholder:font-normal placeholder:opacity-60`}
+                style={{ letterSpacing: showPassword ? '0' : '0.2em', color: 'hsl(0deg 0.61% 20%)' }}
                 required
               />
             </div>
-            <TooltipProvider>
-              <Tooltip>
-                <TooltipTrigger asChild>
-                  <button
-                    type="button"
-                    onClick={onUnableToLogin}
-                    className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-300 hover:text-gray-400 transition-colors"
-                  >
-                    <HelpCircle className="w-5 h-5" />
-                  </button>
-                </TooltipTrigger>
-                <TooltipContent>
-                  <p>Forgot Password</p>
-                </TooltipContent>
-              </Tooltip>
-            </TooltipProvider>
+            <div className="absolute right-3 top-1/2 transform -translate-y-1/2 flex items-center gap-2 z-10">
+              {password && (
+                <button
+                  type="button"
+                  onClick={() => setShowPassword(!showPassword)}
+                  className="text-gray-400 hover:text-gray-600 transition-colors"
+                  aria-label={showPassword ? "Hide password" : "Show password"}
+                >
+                  {showPassword ? <EyeOff className="w-5 h-5" /> : <Eye className="w-5 h-5" />}
+                </button>
+              )}
+              <TooltipProvider>
+                <Tooltip>
+                  <TooltipTrigger asChild>
+                    <button
+                      type="button"
+                      onClick={onUnableToLogin}
+                      className="text-gray-300 hover:text-gray-400 transition-colors"
+                    >
+                      <HelpCircle className="w-5 h-5" />
+                    </button>
+                  </TooltipTrigger>
+                  <TooltipContent>
+                    <p>Forgot Password</p>
+                  </TooltipContent>
+                </Tooltip>
+              </TooltipProvider>
+            </div>
           </div>
         </div>
 
@@ -115,7 +130,8 @@ export const LoginFormV2 = ({ onUnableToLogin, onLoginSuccess }: LoginFormV2Prop
                 placeholder="Account #"
                 value={accountNumber}
                 onChange={(e) => setAccountNumber(e.target.value)}
-                className="pl-10 h-12 rounded-lg border-2 border-[#69C1E2] bg-white hover:border-[#4fa8d0] focus:border-[#4fa8d0] focus-visible:ring-0 transition-colors"
+                className="pl-10 h-12 rounded-lg border-2 border-[#69C1E2] bg-white hover:border-[#4fa8d0] focus:border-[#4fa8d0] focus-visible:ring-0 transition-colors font-semibold placeholder:font-normal placeholder:opacity-60"
+                style={{ color: 'hsl(0deg 0.61% 20%)' }}
               />
             </div>
           </div>
@@ -123,17 +139,21 @@ export const LoginFormV2 = ({ onUnableToLogin, onLoginSuccess }: LoginFormV2Prop
 
         <Button
           type="submit"
-          className="w-full h-12 text-white font-semibold loginpage-v2-submit-btn text-lg rounded-lg"
+          className="w-full h-14 text-white font-semibold loginpage-v2-submit-btn text-lg rounded-lg transition-all duration-300"
           style={{
-            background: 'linear-gradient(135deg, #9AC449 0%, #69C1E2 100%)',
-            border: '1px solid rgba(255, 255, 255, 0.3)',
+            background: 'linear-gradient(135deg, rgb(160, 240, 6) 0%, rgb(7, 169, 229) 100%)',
+            border: '1px solid white',
             boxShadow: '0 2px 4px rgba(0, 0, 0, 0.15)',
           }}
           onMouseEnter={(e) => {
-            e.currentTarget.style.background = 'linear-gradient(135deg, #8ab43a 0%, #5aa8c0 100%)';
+            e.currentTarget.style.background = 'linear-gradient(135deg, rgb(140, 220, 0) 0%, rgb(5, 149, 209) 100%)';
+            e.currentTarget.style.boxShadow = '0 4px 8px rgba(0, 0, 0, 0.25)';
+            e.currentTarget.style.transform = 'translateY(-1px)';
           }}
           onMouseLeave={(e) => {
-            e.currentTarget.style.background = 'linear-gradient(135deg, #9AC449 0%, #69C1E2 100%)';
+            e.currentTarget.style.background = 'linear-gradient(135deg, rgb(160, 240, 6) 0%, rgb(7, 169, 229) 100%)';
+            e.currentTarget.style.boxShadow = '0 2px 4px rgba(0, 0, 0, 0.15)';
+            e.currentTarget.style.transform = 'translateY(0)';
           }}
         >
           <Lock className="w-4 h-4 mr-2" />
@@ -150,7 +170,21 @@ export const LoginFormV2 = ({ onUnableToLogin, onLoginSuccess }: LoginFormV2Prop
       </form>
 
       {/* Footer Content */}
-      <div className="space-y-3 pt-4 border-t border-border loginpage-v2-footer">
+      <div className="space-y-3 loginpage-v2-footer">
+        {/* System Status Button - Centered on line */}
+        <div className="relative flex items-center justify-center">
+          <div className="absolute inset-0 flex items-center">
+            <div className="w-full border-t border-gray-300"></div>
+          </div>
+          <button className="relative inline-flex items-center gap-1.5 px-3 py-1 rounded-full border border-gray-300 bg-white hover:bg-gray-50 transition-colors">
+            <span className="relative flex items-center justify-center">
+              <span className="absolute w-2 h-2 bg-green-500 rounded-full animate-pulse-dot"></span>
+              <span className="w-1.5 h-1.5 bg-green-500 rounded-full"></span>
+            </span>
+            <span className="text-[10px] font-medium" style={{ color: 'hsl(0deg 0.61% 32.35%)' }}>SYSTEM STATUS</span>
+          </button>
+        </div>
+        
         <p className="text-[10px] leading-tight text-center" style={{ color: 'hsl(0deg 0.61% 32.35%)' }}>
           This system contains PHI information and therefore for HIPAA compliance and security purposes, 
           the system should only be accessed by authorized users
