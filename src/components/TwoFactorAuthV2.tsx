@@ -1,13 +1,14 @@
 import { Button } from "@/components/ui/button";
-import { Shield, ShieldCheck } from "lucide-react";
+import { Shield, ShieldCheck, Phone, Mail } from "lucide-react";
 
 interface TwoFactorAuthV2Props {
   onEnroll?: () => void;
   onDefer?: () => void;
   hideHeader?: boolean;
+  hideFooterContactLinks?: boolean;
 }
 
-export const TwoFactorAuthV2 = ({ onEnroll, onDefer, hideHeader = false }: TwoFactorAuthV2Props) => {
+export const TwoFactorAuthV2 = ({ onEnroll, onDefer, hideHeader = false, hideFooterContactLinks = false }: TwoFactorAuthV2Props) => {
   const enrollmentDeadline = "12/17/2025";
 
   return (
@@ -75,6 +76,33 @@ export const TwoFactorAuthV2 = ({ onEnroll, onDefer, hideHeader = false }: TwoFa
         <p className="text-xs text-center" style={{ color: 'hsl(0deg 0.61% 32.35%)' }}>
           © 2025 PracticeSuite Inc.
         </p>
+        
+        {/* Mobile Contact Links - Only visible on mobile, hidden on desktop */}
+        {!hideFooterContactLinks && (
+        <div className="lg:hidden flex flex-row items-center justify-center gap-4 pt-2 pb-4">
+          <div className="flex items-center gap-2">
+            <Mail className="w-4 h-4" style={{ color: 'hsl(0deg 0.61% 32.35%)' }} />
+            <a 
+              href="mailto:support@practicesuite.com" 
+              className="text-base font-medium hover:underline transition-colors"
+              style={{ color: 'hsl(0deg 0.61% 32.35%)', fontSize: '1rem' }}
+            >
+              Contact Support
+            </a>
+          </div>
+          
+          <div className="flex items-center gap-2">
+            <Phone className="w-4 h-4" style={{ color: 'hsl(0deg 0.61% 32.35%)' }} />
+            <a 
+              href="tel:8136072800" 
+              className="text-base font-medium hover:underline transition-colors"
+              style={{ color: 'hsl(0deg 0.61% 32.35%)', fontSize: '1rem' }}
+            >
+              (813) 607-2800
+            </a>
+          </div>
+        </div>
+        )}
       </div>
     </div>
   );

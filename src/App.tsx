@@ -3,6 +3,7 @@ import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
+import IndexV1 from "./pages/IndexV1";
 import IndexV2 from "./pages/IndexV2";
 import NotFound from "./pages/NotFound";
 
@@ -13,8 +14,14 @@ const App = () => (
     <TooltipProvider>
       <Toaster />
       <Sonner />
-      <BrowserRouter>
+      <BrowserRouter
+        future={{
+          v7_startTransition: true,
+          v7_relativeSplatPath: true,
+        }}
+      >
         <Routes>
+          <Route path="/loginpage_v1" element={<IndexV1 />} />
           <Route path="/loginpage_v2" element={<IndexV2 />} />
           <Route path="/" element={<Navigate to="/loginpage_v2" replace />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}

@@ -7,7 +7,7 @@ import logo from "@/assets/practicesuite.svg";
 
 interface UnableToLoginV2Props {
   onBackToLogin?: () => void;
-  onLogoClick?: () => void;
+  onLogoClick?: (e: React.MouseEvent<HTMLAnchorElement>) => void;
 }
 
 type ProblemType = "forgot-password" | "forgot-account-number" | "other" | null;
@@ -45,7 +45,7 @@ export const UnableToLoginV2 = ({ onBackToLogin, onLogoClick }: UnableToLoginV2P
 
   return (
     <div className="w-full max-w-md space-y-4 animate-in fade-in duration-500 loginpage-v2-unable-login">
-      <a href="#username-v2" onClick={(e) => { e.preventDefault(); onLogoClick?.(); }} className="inline-block cursor-pointer">
+      <a href="#username-v2" onClick={(e) => { e.preventDefault(); onLogoClick?.(e); }} className="inline-block cursor-pointer">
         <img src={logo} alt="PracticeSuite" className="h-10 sm:h-12 loginpage-v2-logo" />
       </a>
       

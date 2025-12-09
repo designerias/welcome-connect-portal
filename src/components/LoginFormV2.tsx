@@ -3,15 +3,17 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip";
-import { User, Lock, Search, HelpCircle, Eye, EyeOff } from "lucide-react";
+import { User, Lock, Search, HelpCircle, Eye, EyeOff, Phone, Mail } from "lucide-react";
 import logo from "@/assets/practicesuite.svg";
 
 interface LoginFormV2Props {
   onUnableToLogin?: () => void;
   onLoginSuccess?: () => void;
+  usernameFieldId?: string;
+  hideFooterContactLinks?: boolean;
 }
 
-export const LoginFormV2 = ({ onUnableToLogin, onLoginSuccess }: LoginFormV2Props) => {
+export const LoginFormV2 = ({ onUnableToLogin, onLoginSuccess, usernameFieldId = "username-v2", hideFooterContactLinks = false }: LoginFormV2Props) => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [accountNumber, setAccountNumber] = useState("");
@@ -32,14 +34,14 @@ export const LoginFormV2 = ({ onUnableToLogin, onLoginSuccess }: LoginFormV2Prop
     <div className="w-full space-y-4 loginpage-v2-form">
       <form onSubmit={handleSubmit} className="space-y-2.5 loginpage-v2-form-element pt-4 sm:pt-[15px]">
         <div className="space-y-1.5">
-          <Label htmlFor="username-v2" className="text-sm font-medium" style={{ color: 'hsl(0deg 0.61% 32.35%)' }}>
+          <Label htmlFor={usernameFieldId} className="text-sm font-medium" style={{ color: 'hsl(0deg 0.61% 32.35%)' }}>
             Username
           </Label>
           <div className="relative">
             <User className="absolute left-3 top-1/2 transform -translate-y-1/2 text-[#69C1E2] w-5 h-5 z-10" />
             <div className="relative rounded-lg border border-transparent p-[2px] focus-within:border-dashed focus-within:border-[#9AC449] transition-colors">
               <Input
-                id="username-v2"
+                id={usernameFieldId}
                 type="text"
                 placeholder="Username"
                 value={username}
@@ -203,7 +205,7 @@ export const LoginFormV2 = ({ onUnableToLogin, onLoginSuccess }: LoginFormV2Prop
         </div>
         
         <div className="space-y-1.5">
-          <div className="flex items-center justify-center gap-3 text-xs" style={{ color: 'hsl(0deg 0.61% 32.35%)' }}>
+          <div className="flex items-center justify-center gap-1.5 text-xs" style={{ color: 'hsl(0deg 0.61% 32.35%)' }}>
             <a href="#" className="transition-colors" style={{ color: 'hsl(0deg 0.61% 32.35%)' }} onMouseEnter={(e) => e.currentTarget.style.color = 'hsl(0deg 0.61% 32.35% / 0.8)'} onMouseLeave={(e) => e.currentTarget.style.color = 'hsl(0deg 0.61% 32.35%)'}>Privacy Policy</a>
             <span>|</span>
             <a href="#" className="transition-colors" style={{ color: 'hsl(0deg 0.61% 32.35%)' }} onMouseEnter={(e) => e.currentTarget.style.color = 'hsl(0deg 0.61% 32.35% / 0.8)'} onMouseLeave={(e) => e.currentTarget.style.color = 'hsl(0deg 0.61% 32.35%)'}>Privacy Policy (CA)</a>
@@ -212,7 +214,7 @@ export const LoginFormV2 = ({ onUnableToLogin, onLoginSuccess }: LoginFormV2Prop
             <span>|</span>
             <a href="#" className="transition-colors" style={{ color: 'hsl(0deg 0.61% 32.35%)' }} onMouseEnter={(e) => e.currentTarget.style.color = 'hsl(0deg 0.61% 32.35% / 0.8)'} onMouseLeave={(e) => e.currentTarget.style.color = 'hsl(0deg 0.61% 32.35%)'}>SLA</a>
           </div>
-          <div className="flex items-center justify-center gap-3 text-xs" style={{ color: 'hsl(0deg 0.61% 32.35%)' }}>
+          <div className="flex items-center justify-center gap-1.5 text-xs" style={{ color: 'hsl(0deg 0.61% 32.35%)' }}>
             <a href="#" className="transition-colors" style={{ color: 'hsl(0deg 0.61% 32.35%)' }} onMouseEnter={(e) => e.currentTarget.style.color = 'hsl(0deg 0.61% 32.35% / 0.8)'} onMouseLeave={(e) => e.currentTarget.style.color = 'hsl(0deg 0.61% 32.35%)'}>Terms & Conditions</a>
             <span>|</span>
             <a href="#" className="transition-colors" style={{ color: 'hsl(0deg 0.61% 32.35%)' }} onMouseEnter={(e) => e.currentTarget.style.color = 'hsl(0deg 0.61% 32.35% / 0.8)'} onMouseLeave={(e) => e.currentTarget.style.color = 'hsl(0deg 0.61% 32.35%)'}>HIPAA & HITECH</a>
@@ -222,6 +224,33 @@ export const LoginFormV2 = ({ onUnableToLogin, onLoginSuccess }: LoginFormV2Prop
         <p className="text-xs text-center" style={{ color: 'hsl(0deg 0.61% 32.35%)' }}>
           © 2025 PracticeSuite Inc.
         </p>
+        
+        {/* Mobile Contact Links - Only visible on mobile, hidden on desktop */}
+        {!hideFooterContactLinks && (
+        <div className="lg:hidden flex flex-row items-center justify-center gap-4 pt-2 pb-4">
+          <div className="flex items-center gap-2">
+            <Mail className="w-4 h-4" style={{ color: 'hsl(0deg 0.61% 32.35%)' }} />
+            <a 
+              href="mailto:support@practicesuite.com" 
+              className="text-base font-medium hover:underline transition-colors"
+              style={{ color: 'hsl(0deg 0.61% 32.35%)', fontSize: '1rem' }}
+            >
+              Contact Support
+            </a>
+          </div>
+          
+          <div className="flex items-center gap-2">
+            <Phone className="w-4 h-4" style={{ color: 'hsl(0deg 0.61% 32.35%)' }} />
+            <a 
+              href="tel:8136072800" 
+              className="text-base font-medium hover:underline transition-colors"
+              style={{ color: 'hsl(0deg 0.61% 32.35%)', fontSize: '1rem' }}
+            >
+              (813) 607-2800
+            </a>
+          </div>
+        </div>
+        )}
       </div>
     </div>
   );

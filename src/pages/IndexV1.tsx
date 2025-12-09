@@ -9,7 +9,7 @@ import { Shield, Phone, Mail } from "lucide-react";
 import icon from "@/assets/icon.svg";
 import logo from "@/assets/practicesuite.svg";
 
-const IndexV2 = () => {
+const IndexV1 = () => {
   const [showUnableToLogin, setShowUnableToLogin] = useState(false);
   const [showTwoFactorAuth, setShowTwoFactorAuth] = useState(false);
   const [show2FAVerify, setShow2FAVerify] = useState(false);
@@ -39,7 +39,7 @@ const IndexV2 = () => {
     
     // Scroll to username field after a brief delay to ensure form is rendered
     setTimeout(() => {
-      const usernameField = document.getElementById('username-v2');
+      const usernameField = document.getElementById('username-v1');
       if (usernameField) {
         usernameField.scrollIntoView({ behavior: 'smooth', block: 'center' });
         usernameField.focus();
@@ -49,6 +49,59 @@ const IndexV2 = () => {
 
   return (
     <div className="min-h-screen flex flex-col bg-background loginpage-v2-container">
+      {/* Global Top Header */}
+      <header className="w-full px-4 sm:px-6 md:px-8 lg:px-12 py-4 flex items-center justify-between bg-white border-b border-gray-200 relative z-10 shadow-md">
+        {/* Logo on the left */}
+        <div className="flex items-center">
+          <a href="#username-v1" onClick={handleLogoClick} className="inline-block cursor-pointer">
+            <img src={logo} alt="PracticeSuite" className="h-9 sm:h-11 md:h-12" style={{ maxWidth: '200px' }} />
+          </a>
+        </div>
+        
+        {/* Contact links on the right */}
+        <div className="flex items-center gap-2 sm:gap-3">
+          {/* Phone Number */}
+          <a
+            href="tel:8136072800"
+            className="flex items-center justify-center gap-2 px-3 sm:px-4 py-2 rounded-full bg-white border-2 transition-colors text-base font-semibold"
+            style={{ 
+              fontSize: '1rem',
+              borderColor: '#7fbfde',
+              color: '#403f40'
+            }}
+            onMouseEnter={(e) => {
+              e.currentTarget.style.backgroundColor = 'rgba(127, 191, 222, 0.1)';
+            }}
+            onMouseLeave={(e) => {
+              e.currentTarget.style.backgroundColor = 'white';
+            }}
+          >
+            <Phone className="w-4 h-4" style={{ color: '#3375b1' }} />
+            <span className="hidden sm:inline">813-607-2800</span>
+          </a>
+          
+          {/* Contact Support */}
+          <a
+            href="mailto:support@practicesuite.com"
+            className="flex items-center justify-center gap-2 px-3 sm:px-4 py-2 rounded-full bg-white border-2 transition-colors text-base font-semibold"
+            style={{ 
+              fontSize: '1rem',
+              borderColor: '#7fbfde',
+              color: '#403f40'
+            }}
+            onMouseEnter={(e) => {
+              e.currentTarget.style.backgroundColor = 'rgba(127, 191, 222, 0.1)';
+            }}
+            onMouseLeave={(e) => {
+              e.currentTarget.style.backgroundColor = 'white';
+            }}
+          >
+            <Mail className="w-4 h-4" style={{ color: '#3375b1' }} />
+            <span className="hidden sm:inline">Contact Support</span>
+          </a>
+        </div>
+      </header>
+
       {/* Main Content */}
       <main className="flex-1 grid lg:grid-cols-2 loginpage-v2-main relative" style={{ backgroundColor: '#f9fcfd' }}>
         {/* Left Side - Login Form, Unable to Login, or 2FA */}
@@ -57,9 +110,6 @@ const IndexV2 = () => {
             {/* Static Logo and Welcome Section - Hidden on Unable to login page */}
             {!showUnableToLogin && (
               <div className="space-y-2 loginpage-v2-static-header">
-                <a href="#username-v2" onClick={handleLogoClick} className="inline-block cursor-pointer">
-                  <img src={logo} alt="PracticeSuite" className="h-10 sm:h-12 loginpage-v2-logo" />
-                </a>
                 <h1 className="text-2xl sm:text-3xl font-bold loginpage-v2-title" style={{ color: 'hsl(0deg 0.61% 32.35%)' }}>Welcome Back!</h1>
                 <p className="text-sm sm:text-base loginpage-v2-subtitle" style={{ color: 'hsl(0deg 0.61% 32.35%)' }}>Login to your account.</p>
                 <div className="h-0.5 bg-gray-400 w-24 mb-4 loginpage-v2-divider"></div>
@@ -90,6 +140,8 @@ const IndexV2 = () => {
                     <LoginFormV2 
                       onUnableToLogin={() => setShowUnableToLogin(true)}
                       onLoginSuccess={() => setShow2FAVerify(true)}
+                      usernameFieldId="username-v1"
+                      hideFooterContactLinks={true}
                     />
                   )}
                 </div>
@@ -121,12 +173,14 @@ const IndexV2 = () => {
                       onAssign={() => console.log("Assign MFA clicked")}
                       onCancel={() => setShowMFASetup(false)}
                       hideHeader={true}
+                      hideFooterContactLinks={true}
                     />
                   ) : (
                     <TwoFactorAuthV2 
                       onEnroll={() => setShowMFASetup(true)}
                       onDefer={handleDefer}
                       hideHeader={true}
+                      hideFooterContactLinks={true}
                     />
                   )}
                 </div>
@@ -142,44 +196,16 @@ const IndexV2 = () => {
 
         {/* Right Side - Carousel */}
         <div 
-          className="relative overflow-hidden hidden lg:flex flex-col rounded-[20px] m-2.5 loginpage-v2-carousel-wrapper border-[0.25px] border-gray-300"
+          className="relative overflow-hidden hidden lg:flex flex-col h-full loginpage-v2-carousel-wrapper"
           style={{
-            background: 'linear-gradient(210deg in oklab, rgb(255, 255, 255) 10%, rgb(180, 224, 241) 115%, rgb(105, 193, 226) 225%)'
+            background: 'linear-gradient(210deg in oklab, rgb(255, 255, 255) 10%, rgb(180, 224, 241) 115%, rgb(105, 193, 226) 225%)',
+            padding: '0',
+            margin: '0'
           }}
         >
-          {/* Top Bar with Contact Info */}
-          <div className="relative rounded-t-[20px] pl-10 pr-4 md:pl-16 md:pr-10 py-3 flex items-center justify-start gap-6 loginpage-v2-top-bar">
-            {/* Pixel Line - Separates top bar from content below */}
-            <div className="absolute bottom-0 left-0 right-0 h-px bg-gray-300 loginpage-v2-pixel-line"></div>
-            
-            {/* Contact Support */}
-            <div className="flex items-center gap-2">
-              <Mail className="w-4 h-4" style={{ color: 'hsl(0deg 0.61% 32.35%)' }} />
-              <a 
-                href="mailto:support@practicesuite.com" 
-                className="text-base font-medium hover:underline transition-colors"
-                style={{ color: 'hsl(0deg 0.61% 32.35%)', fontSize: '1rem' }}
-              >
-                Contact Support
-              </a>
-            </div>
-            
-            {/* Phone Number */}
-            <div className="flex items-center gap-2">
-              <Phone className="w-4 h-4" style={{ color: 'hsl(0deg 0.61% 32.35%)' }} />
-              <a 
-                href="tel:8136072800" 
-                className="text-base font-medium hover:underline transition-colors"
-                style={{ color: 'hsl(0deg 0.61% 32.35%)', fontSize: '1rem' }}
-              >
-                (813) 607-2800
-              </a>
-            </div>
-          </div>
-          
           {/* Carousel Content */}
           <div 
-            className="relative flex-1 overflow-hidden rounded-b-[20px]"
+            className="relative flex-1 overflow-hidden"
           >
             {/* Icon inside right box - bottom right corner */}
             <div className="absolute bottom-10 right-10 z-10 loginpage-v2-right-box-icon">
@@ -196,5 +222,5 @@ const IndexV2 = () => {
   );
 };
 
-export default IndexV2;
+export default IndexV1;
 
