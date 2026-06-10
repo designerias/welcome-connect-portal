@@ -51,11 +51,22 @@ export const TwoFactorVerifyV2 = ({
     <div className="w-full space-y-4 loginpage-v2-2fa-verify">
       <div className="space-y-4 pt-2">
         {isVerified ? (
-          <div className="flex flex-col items-center justify-center py-8 space-y-3">
-            <CheckCircle2 className="w-16 h-16 text-green-500" />
-            <p className="text-lg font-semibold" style={{ color: 'hsl(0deg 0.61% 32.35%)' }}>
-              Verification Successful!
-            </p>
+          <div className="flex flex-col items-center justify-center py-10 space-y-5 animate-in fade-in zoom-in-95 duration-500">
+            <div className="relative">
+              <span className="absolute inset-0 rounded-full bg-green-500/20 animate-ping" />
+              <span className="absolute inset-0 rounded-full bg-green-500/10 blur-xl" />
+              <div className="relative flex items-center justify-center w-20 h-20 rounded-full bg-gradient-to-br from-green-400 to-green-600 shadow-lg shadow-green-500/40">
+                <CheckCircle2 className="w-12 h-12 text-white" strokeWidth={2.5} />
+              </div>
+            </div>
+            <div className="text-center space-y-1">
+              <p className="text-xl font-bold tracking-tight" style={{ color: 'hsl(0deg 0.61% 32.35%)' }}>
+                Verification Successful!
+              </p>
+              <p className="text-sm text-muted-foreground">
+                You're being securely signed in...
+              </p>
+            </div>
           </div>
         ) : (
           <>
