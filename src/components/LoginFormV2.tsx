@@ -143,17 +143,17 @@ export const LoginFormV2 = ({ onUnableToLogin, onLoginSuccess, usernameFieldId =
           type="submit"
           className="w-full h-14 text-white font-semibold loginpage-v2-submit-btn text-lg rounded-lg transition-all duration-300"
           style={{
-            background: 'linear-gradient(135deg, rgb(160, 240, 6) 0%, rgb(7, 169, 229) 100%)',
+            background: 'hsl(205.8 76.6% 43.5%)',
             border: '1px solid white',
             boxShadow: '0 2px 4px rgba(0, 0, 0, 0.15)',
           }}
           onMouseEnter={(e) => {
-            e.currentTarget.style.background = 'linear-gradient(135deg, rgb(140, 220, 0) 0%, rgb(5, 149, 209) 100%)';
+            e.currentTarget.style.background = 'hsl(207.3 77.8% 37.1%)';
             e.currentTarget.style.boxShadow = '0 4px 8px rgba(0, 0, 0, 0.25)';
             e.currentTarget.style.transform = 'translateY(-1px)';
           }}
           onMouseLeave={(e) => {
-            e.currentTarget.style.background = 'linear-gradient(135deg, rgb(160, 240, 6) 0%, rgb(7, 169, 229) 100%)';
+            e.currentTarget.style.background = 'hsl(205.8 76.6% 43.5%)';
             e.currentTarget.style.boxShadow = '0 2px 4px rgba(0, 0, 0, 0.15)';
             e.currentTarget.style.transform = 'translateY(0)';
           }}
